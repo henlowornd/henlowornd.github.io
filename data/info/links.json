@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Norcleeh's Site",
+        "description": "由一条咸鱼搭建的网站",
+        "url": "https://nocp.space",
+        "avatar": "https://nocp.space/static/icon.png"
+    },
+    {
+        "name": "OPanel",
+        "description": "一个Minecraft服务端管理面板，支持多种服务端",
+        "url": "https://opanel.cn",
+        "avatar": "https://opanel.cn/static/logo-icon.png"
+    }
+]
