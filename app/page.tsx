@@ -7,11 +7,11 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="h-screen px-[25%] py-50">
-      <div className="w-full h-full flex justify-between">
-        {/* Left side */}
+    <div className="h-screen px-[25%] pt-50">
+      <div className="w-full h-fit flex justify-between max-lg:flex-col-reverse max-lg:gap-10">
+        {/* Left side / Lower part */}
         <div className="flex flex-col gap-14">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 max-lg:items-center">
             <h2 className="flex items-center gap-2">
               <User />
               <span className="text-2xl font-semibold">关于我</span>
@@ -38,7 +38,7 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 max-lg:items-center">
             <h2 className="flex items-center gap-2">
               <AppWindow />
               <span className="text-2xl font-semibold">关于此页面</span>
@@ -50,10 +50,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right side */}
-        <div className="flex flex-col gap-20">
+        {/* Right side / Upper part */}
+        <div className="flex flex-col gap-20 max-lg:items-center">
           <Image src={Avatar} alt="avatar" className="w-40 border-[12px] rounded-full mx-auto"/>
-          <div className="flex flex-col gap-10 [&>*]:text-2xl [&>*]:text-muted-foreground">
+          <div className="flex flex-col gap-10 max-lg:gap-4 [&>*]:text-2xl [&>*]:text-muted-foreground">
             <span>&#47;&#47; 你好，很高兴见到你！</span>
             <span>&#47;&#47; What a thing</span>
           </div>

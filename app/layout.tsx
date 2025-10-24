@@ -37,8 +37,7 @@ export default function RootLayout({
       <body className={cn(firaCode.className, "antialiased")}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          forcedTheme="dark"
           disableTransitionOnChange>
           <Navbar />
           <main>

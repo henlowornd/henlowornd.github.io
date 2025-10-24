@@ -8,7 +8,6 @@ import {
 	NavigationMenuLink,
 	NavigationMenuList
 } from "./ui/navigation-menu";
-import { ThemeToggle } from "./theme-toggle";
 import { blogName } from "@/lib/global";
 
 interface NavbarItem {
@@ -53,8 +52,6 @@ export function Navbar() {
 						</NavigationMenuItem>
 					))}
 				</NavigationMenuList>
-
-				<ThemeToggle />
 			</div>
 		</NavigationMenu>
 	);
