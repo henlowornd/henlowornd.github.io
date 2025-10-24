@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Info } from "lucide-react";
+import { CalendarClock, FileClock, FileText, Info, UserPen } from "lucide-react";
 import { blogName, siteKeywords } from "@/lib/global";
 import { getArticle } from "@/lib/blog";
 import { formatDate } from "@/lib/utils";
@@ -38,12 +38,26 @@ export default async function Article({
   }
 
   return (
-    <div className="page-padding flex flex-col gap-10">
-      <div className="mt-6 flex flex-col gap-12">
-        <h1 className="text-4xl font-bold">{article.title}</h1>
-        <div className="space-x-4">
-          <span className="text-secondary-foreground">By {article.author}</span>
-          <span className="text-yellow-600">{formatDate(article.date)}</span>
+    <div className="page-padding flex flex-col gap-6">
+      <div className="mt-6 flex flex-col gap-4">
+        <h1 className="text-4xl">{article.title}</h1>
+        <div className="flex items-center gap-2">
+          <UserPen size={20}/>
+          <span>Author {article.author}</span>
+        </div>
+        <div className="flex gap-4">
+          <div className="flex items-center gap-2">
+            <FileText size={20}/>
+            <span>{article.wordCount >= 1000 ? (Math.round(article.wordCount / 100) / 10 +"k") : article.wordCount} 字</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <FileClock size={20}/>
+            <span>{article.readingTime} mins</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <CalendarClock size={20}/>
+            <span>{formatDate(article.date)}</span>
+          </div>
           <div className="inline-block space-x-2">
             {article.tags.map((tag, i) => (
               <Link
@@ -55,7 +69,7 @@ export default async function Article({
           </div>
         </div>
         {article.hasAI && (
-          <Alert className="rounded-md">
+          <Alert className="rounded-md border-none">
             <Info />
             <AlertTitle>本文包含AI生成内容</AlertTitle>
             <AlertDescription>

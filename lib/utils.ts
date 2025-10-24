@@ -22,7 +22,7 @@ export function formatDate(date: Date): string {
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const day = date.getDate().toString().padStart(2, "0");
   
-  return `${year}-${month}-${day}`;
+  return `${year.toString().substring(2)}/${month}/${day}`;
 }
 
 export function getRelativeNumber(min: number, max: number, n: number, total: number): number {

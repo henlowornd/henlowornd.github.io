@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { Rss } from "lucide-react";
 import {
 	NavigationMenu,
 	NavigationMenuItem,
@@ -16,21 +16,18 @@ interface NavbarItem {
 	external?: boolean
 }
 
-const leftList: NavbarItem[] = [
+const navList: NavbarItem[] = [
 	{ name: blogName, url: "/" },
-	{ name: "留言板", url: "/comments" },
-	{ name: "友链", url: "/links" },
-];
-
-const rightList: NavbarItem[] = [
-	{ name: "Blog", url: "/blog" }
+	{ name: "Blog", url: "/blog" },
+	{ name: "Comments", url: "/comments" },
+	{ name: "Links", url: "/links" },
 ];
 
 export function Navbar() {
 	return (
 		<NavigationMenu className="z-10 nav-padding w-full max-w-none pt-1 flex justify-between fixed shadow-[var(--nav-drop-shadow)] backdrop-blur-xs overflow-hidden *:text-sm">
 			<NavigationMenuList className="max-sm:gap-0 text-nowrap">
-				{leftList.map(({ name, url }, i) => (
+				{navList.map(({ name, url }, i) => (
 					<NavigationMenuItem key={i}>
 						<NavigationMenuLink asChild>
 							<Link href={url}>{name}</Link>
@@ -39,19 +36,10 @@ export function Navbar() {
 				))}
 			</NavigationMenuList>
 
-			<div className="flex gap-1 items-center max-sm:hidden">
-				<NavigationMenuList>
-					{rightList.map(({ name, url, external }, i) => (
-						<NavigationMenuItem key={i}>
-							<NavigationMenuLink asChild>
-								<Link href={url} target={external ? "_blank" : "_self"}>
-									{name}
-									{external && <ExternalLink />}
-								</Link>
-							</NavigationMenuLink>
-						</NavigationMenuItem>
-					))}
-				</NavigationMenuList>
+			<div className="flex gap-3 items-center max-sm:hidden">
+				<Link href="/rss/feed.json" title="订阅 RSS">
+					<Rss size={18}/>
+				</Link>
 			</div>
 		</NavigationMenu>
 	);

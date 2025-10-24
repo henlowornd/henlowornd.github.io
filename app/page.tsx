@@ -14,7 +14,7 @@ export default function Home() {
           <div className="flex flex-col gap-4 max-lg:items-center">
             <h2 className="flex items-center gap-2">
               <User />
-              <span className="text-2xl font-semibold">关于我</span>
+              <span className="text-2xl">About me</span>
             </h2>
             <div className="flex flex-col">
               <span>A Chinese college student;</span>
@@ -41,7 +41,7 @@ export default function Home() {
           <div className="flex flex-col gap-4 max-lg:items-center">
             <h2 className="flex items-center gap-2">
               <AppWindow />
-              <span className="text-2xl font-semibold">关于此页面</span>
+              <span className="text-2xl">About the page</span>
             </h2>
             <div className="flex flex-col">
               <span>已运行天数：</span>
@@ -51,10 +51,10 @@ export default function Home() {
         </div>
 
         {/* Right side / Upper part */}
-        <div className="flex flex-col gap-20 max-lg:items-center">
+        <div className="flex flex-col gap-6 max-lg:items-center">
           <Image src={Avatar} alt="avatar" className="w-40 border-[12px] rounded-full mx-auto"/>
-          <div className="flex flex-col gap-10 max-lg:gap-4 [&>*]:text-2xl [&>*]:text-muted-foreground">
-            <span>&#47;&#47; 你好，很高兴见到你！</span>
+          <div className="h-full flex flex-col justify-between max-lg:gap-4 [&>*]:text-2xl [&>*]:text-muted-foreground">
+            <span>&#47;&#47; 你好！很高兴见到你！</span>
             <span>&#47;&#47; What a thing</span>
           </div>
         </div>

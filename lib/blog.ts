@@ -4,6 +4,8 @@ import { loadFront } from "yaml-front-matter";
 
 export interface Post {
   slug: string
+  wordCount: number
+  readingTime: number // minutes
   title: string
   author: string
   date: Date
@@ -26,13 +28,25 @@ export function getAllArticles<T extends boolean = false>(containContent: T): T 
     const filePath = path.join(postsDirectory, fileName);
     const fileContent = fs.readFileSync(filePath, "utf-8");
     const front = loadFront(fileContent) as Article;
+    const wordCount = front.__content.length;
+    const readingTime = Math.max(1, Math.round(wordCount / 300));
 
     if(!containContent) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { __content, ...info } = front;
-      (list as Post[]).push({ ...info, slug: fileName.replace(".md", "") });
+      (list as Post[]).push({
+        ...info,
+        slug: fileName.replace(".md", ""),
+        wordCount,
+        readingTime
+      });
     } else {
-      list.push({ ...front, slug: fileName.replace(".md", "") });
+      list.push({
+        ...front,
+        slug: fileName.replace(".md", ""),
+        wordCount,
+        readingTime
+      });
     }
   }
   list.sort((a, b) => b.date.getTime() - a.date.getTime());
@@ -47,7 +61,14 @@ export function getArticle(slug: string): Article | null {
 
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const front = loadFront(fileContent);
-  return { ...front, slug } as Article;
+  const wordCount = front.__content.length;
+  const readingTime = Math.max(1, Math.round(wordCount / 300));
+  return {
+    ...front,
+    slug,
+    wordCount,
+    readingTime
+  } as Article;
 }
 
 export function getPostByTitle(title: string): Post | null {
