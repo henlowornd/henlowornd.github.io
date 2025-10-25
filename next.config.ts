@@ -27,6 +27,33 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "react-icons"],
   },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      issuer: /\.[jt]sx?$/,
+      use: [{
+        loader: "@svgr/webpack",
+        options: {
+          dimensions: false
+        }
+      }],
+    });
+
+    return config;
+  },
+  turbopack: {
+    rules: {
+      "*.svg": {
+        loaders: [{
+          loader: "@svgr/webpack",
+          options: {
+            dimensions: false
+          }
+        }],
+        as: "*.js"
+      }
+    }
+  }
 };
 
 export default nextConfig;
