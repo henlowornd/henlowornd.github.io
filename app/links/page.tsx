@@ -9,9 +9,9 @@ import links from "@/data/info/links.json";
 export default function Links() {
   return (
     <Page title="友情链接">
-      <p>如果你也想与我交换友链，敬请在下方留言，附上你的网站信息，我会不定时查看更新的😉</p>
+      <p>若有意愿交换友链，请在下方留言awa</p>
 
-      <div className="grid grid-cols-2 gap-5 mb-10 max-xl:grid-cols-1">
+      <div className="flex flex-col gap-4 mb-10">
         {links.map((item, i) => <LinkCard {...item} key={i}/>)}
       </div>
 
@@ -21,7 +21,6 @@ export default function Links() {
         <p><b>简介</b>：{blogDescription}</p>
         <p><b>URL</b>：<Link href="/">https://henlo.cc</Link></p>
         <p><b>图标</b>：<Link href="https://henlo.cc/static/icon.png">https://henlo.cc/static/icon.png</Link></p>
-        <p><b>颜色</b>：<span className="bg-theme text-white">#077955</span></p>
       </div>
 
       <GitalkComments issue={3}/>

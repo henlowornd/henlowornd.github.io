@@ -146,6 +146,6 @@
     @apply px-56 max-xl:px-36 max-lg:px-20 max-md:px-7 max-sm:px-4;
   }
   .page-padding {
-    @apply px-[30%] max-2xl:px-[25%] max-lg:px-20 max-md:px-11;
+    @apply px-[30%] max-2xl:px-[25%] max-md:px-24 max-sm:px-11;
   }
 }

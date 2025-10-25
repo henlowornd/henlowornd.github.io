@@ -45,20 +45,20 @@ export default async function Article({
           <UserPen size={20}/>
           <span>Author {article.author}</span>
         </div>
-        <div className="flex gap-4">
-          <div className="flex items-center gap-2">
+        <div className="flex gap-4 flex-wrap [&>*]:whitespace-nowrap [&>*]:inline-flex [&>*]:items-center [&>*]:gap-2">
+          <div>
             <FileText size={20}/>
             <span>{article.wordCount >= 1000 ? (Math.round(article.wordCount / 100) / 10 +"k") : article.wordCount} 字</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div>
             <FileClock size={20}/>
             <span>{article.readingTime} mins</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div>
             <CalendarClock size={20}/>
             <span>{formatDate(article.date)}</span>
           </div>
-          <div className="inline-block space-x-2">
+          <div>
             {article.tags.map((tag, i) => (
               <Link
                 href={`/blog/tag/${tag}`}

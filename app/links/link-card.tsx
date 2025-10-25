@@ -1,11 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import {
-  Card,
-  CardDescription,
-  CardTitle
-} from "@/components/ui/card";
 import type { ArrayElement } from "@/lib/utils";
 import type links from "@/data/info/links.json";
 import { Button } from "@/components/ui/button";
@@ -21,19 +16,17 @@ export function LinkCard({
   };
 
   return (
-    <Card
-      className="h-28 p-0 flex flex-row gap-0 overflow-hidden rounded-md group cursor-pointer"
+    <div
+      className="h-28 p-0 pb-4 border-b last:border-b-0 flex flex-row gap-4 overflow-hidden group cursor-pointer"
       title={url}
       onClick={() => handleClick()}>
-      <Image src={avatar} alt={name} width={112} height={112}/>
-      <div className="p-5 flex flex-col justify-between">
-        <CardTitle>
-          <Button className="text-xl p-0 font-semibold cursor-pointer group-hover:underline" variant="link">
-            {name}
-          </Button>
-        </CardTitle>
-        <CardDescription>{description}</CardDescription>
+      <Image className="m-2 rounded-lg aspect-square" src={avatar} alt={name} width={80} height={0}/>
+      <div className="flex flex-col justify-center items-start gap-2">
+        <Button className="text-xl text-foreground p-0 cursor-pointer group-hover:underline" variant="link">
+          {name}
+        </Button>
+        <span className="text-sm text-muted-foreground">{description}</span>
       </div>
-    </Card>
+    </div>
   );
 }

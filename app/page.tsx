@@ -11,11 +11,11 @@ export default function Home() {
   return (
     <>
       <div className="h-screen flex justify-center items-center">
-        <HomepageBackground width="100%" height="150vh" className="absolute top-0 left-0 right-0 bottom-0 -z-10"/>
+        <HomepageBackground width="100%" height="100%" className="absolute top-0 left-0 right-0 bottom-0 -z-10"/>
         <Barcodes1 width="210" className="absolute top-52 right-[20%] max-lg:static"/>
         <ChevronDown size={60} className="absolute bottom-10"/>
       </div>
-      <div className="h-screen px-[25%] pt-96 max-lg:pt-36">
+      <div className="h-fit px-[25%] pt-36">
         <div className="w-full h-fit flex justify-between max-lg:flex-col-reverse max-lg:gap-10">
           {/* Left side / Lower part */}
           <div className="flex flex-col gap-14">
