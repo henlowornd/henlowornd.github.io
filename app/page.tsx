@@ -60,7 +60,7 @@ export default function Home() {
 
           {/* Right side / Upper part */}
           <div className="flex flex-col gap-6 max-lg:items-center">
-            <Image src={Avatar} alt="avatar" className="w-40 border-[12px] rounded-full mx-auto"/>
+            <Image src={Avatar.src} alt="avatar" className="w-40 border-[12px] rounded-full mx-auto"/>
             <div className="h-full flex flex-col justify-between max-lg:gap-4 [&>*]:text-2xl [&>*]:text-muted-foreground">
               <span>&#47;&#47; 你好！很高兴见到你！</span>
               <span>&#47;&#47; What a thing</span>
