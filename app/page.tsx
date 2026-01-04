@@ -5,6 +5,8 @@ import { githubAccount } from "@/lib/global";
 import Avatar from "@/assets/images/avatar.png";
 import HomepageBackground from "@/assets/images/homepage-background.svg";
 import Barcodes1 from "@/assets/images/barcodes-1.svg";
+import { posts } from "@/lib/blog";
+import { Uptime } from "@/components/uptime";
 
 export default function Home() {
   return (
@@ -51,8 +53,8 @@ export default function Home() {
                 <span className="text-2xl">About the page</span>
               </h2>
               <div className="flex flex-col">
-                <span>已运行天数：</span>
-                <span>文章数：</span>
+                <span>已运行天数：<Uptime /> 天</span>
+                <span>文章数：{posts.length}</span>
               </div>
             </div>
           </div>
