@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import * as MarkdownJSX from "markdown-to-jsx";
+import { RuleType } from "markdown-to-jsx";
 import hljs from "highlight.js";
 import "katex/dist/katex";
 import "katex/contrib/mhchem";
@@ -17,6 +18,7 @@ import {
   TableRow
 } from "./ui/table";
 import bash from "@/lib/hljs/bash";
+import { DisclaimerCallout, ErrorCallout, InfoCallout, TipCallout, WarningCallout } from "./ui/callout";
 
 export function Markdown({ wrapper, children }: {
   wrapper?: boolean
@@ -50,6 +52,18 @@ export function Markdown({ wrapper, children }: {
         th: TableHead,
         tr: TableRow,
         td: TableCell
+      },
+      renderRule(next, node, renderChildren, state) {
+        if(node.type === RuleType.blockQuote && node.alert) {
+          switch(node.alert.toLowerCase()) {
+            case "info": return <InfoCallout key={state.key}>{renderChildren(node.children[0], state)}</InfoCallout>;
+            case "tip": return <TipCallout key={state.key}>{renderChildren(node.children[0], state)}</TipCallout>;
+            case "disclaimer": return <DisclaimerCallout key={state.key}>{renderChildren(node.children[0], state)}</DisclaimerCallout>;
+            case "warning": return <WarningCallout key={state.key}>{renderChildren(node.children[0], state)}</WarningCallout>;
+            case "error": return <ErrorCallout key={state.key}>{renderChildren(node.children[0], state)}</ErrorCallout>;
+          }
+        }
+        return next();
       }
     }}>
       {children}
