@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useEffect } from "react";
@@ -5,7 +6,7 @@ import * as MarkdownJSX from "markdown-to-jsx";
 import hljs from "highlight.js";
 import "katex/dist/katex";
 import "katex/contrib/mhchem";
-import renderMathInElement from "katex/contrib/auto-render";
+import katex from "katex";
 import { CodeBlock } from "./code-block";
 import { ArticleImage } from "./article-image";
 import {
@@ -18,9 +19,32 @@ import {
 } from "./ui/table";
 import bash from "@/lib/hljs/bash";
 
-export function Markdown({ wrapper, children }: {
+function renderLatex(content: string) {
+  // block latex
+  content = content.replace(/\$\$([^\$]+)\$\$/g, (match, formula) => {
+    try {
+      return katex.renderToString(formula, { displayMode: true, output: "html" });
+    } catch (e) {
+      return match;
+    }
+  });
+
+  // inline latex
+  content = content.replace(/\$([^\$]+)\$/g, (match, formula) => {
+    try {
+      return katex.renderToString(formula, { displayMode: false, output: "html" });
+    } catch (e) {
+      return match;
+    }
+  });
+
+  return content;
+}
+
+export function Markdown({ wrapper, children, enableKatex = true }: {
   wrapper?: boolean
   children: string
+  enableKatex?: boolean
 }) {
   // Highlight.js & Katex Rendering
   useEffect(() => {
@@ -29,13 +53,6 @@ export function Markdown({ wrapper, children }: {
     hljs.registerLanguage("bash", () => bash);
     hljs.registerLanguage("cmd", () => bash);
     hljs.highlightAll();
-    
-    renderMathInElement(document.body, {
-      delimiters: [
-        {left: "$$", right: "$$", display: true},
-        {left: "$", right: "$", display: false},
-      ]
-    });
   }, []);
 
   return (
@@ -52,7 +69,7 @@ export function Markdown({ wrapper, children }: {
         td: TableCell
       }
     }}>
-      {children}
+      {enableKatex ? renderLatex(children) : children}
     </MarkdownJSX.default>
   );
 }
