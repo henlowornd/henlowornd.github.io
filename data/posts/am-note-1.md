@@ -5,7 +5,7 @@ tags:
 - "笔记"
 - "高等数学"
 excerpt: "略"
-date: 2026-01-07
+date: 2026-01-06
 hasAI: false
 ---
 # 常用积分表
