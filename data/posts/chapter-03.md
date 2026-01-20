@@ -1,5 +1,5 @@
 ---
-title: "SoS-第三章"
+title: "SoS-第三章 诺斯卡人，贵族和食人魔"
 author: Deed9189
 tags:
 - "SoS"

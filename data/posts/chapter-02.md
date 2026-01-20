@@ -1,5 +1,5 @@
 ---
-title: "SoS-第二章"
+title: "SoS-第二章 猪，屠夫和食人魔"
 author: Deed9189
 tags:
 - "SoS"

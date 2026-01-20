@@ -1,5 +1,5 @@
 ---
-title: "SoS-第一章"
+title: "SoS-第一章 烤肉，酒和食人魔"
 author: Deed9189
 tags:
 - "SoS"
