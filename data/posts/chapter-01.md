@@ -90,7 +90,7 @@ hasAI: false
 我忍不住去想那个，那个最糟糕，最可怕的可能。  
 那个"东西"，真的是个东西吗？
 >
-> ——Fredrick Albrecht, 尤里克月巫日，帝国历2501年。
+> ——Fredrick Albrecht, 巫日，帝国历2501年。
 
 ---
 
