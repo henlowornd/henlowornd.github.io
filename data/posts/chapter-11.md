@@ -6,7 +6,7 @@ tags:
 - "Warhammer fantasy"
 - "小说"
 excerpt: "打架，拉家常和相认。"
-date: 2026-01-23
+date: 2026-01-25
 hasAI: false
 ---
 
