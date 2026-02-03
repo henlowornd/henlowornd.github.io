@@ -22,7 +22,7 @@ export function ArticleCard(post: Post) {
         </div>
       </div>
       <div className="*:text-secondary-foreground *:text-[11pt] *:max-sm:whitespace-normal *:max-sm:break-words">
-        <Markdown>{post.excerpt as string}</Markdown>
+        <Markdown enableKatex={false}>{post.excerpt as string}</Markdown>
       </div>
       <div className="flex justify-between">
         <div className="space-x-2 [&>*]:text-sm [&>*]:text-muted-foreground">
