@@ -5,7 +5,7 @@ tags:
 - "SoS"
 - "Warhammer fantasy"
 - "小说"
-excerpt: "怎么又要打架了？"  
+excerpt: "怎么又要打架了？"
 date: 2026-02-02
 hasAI: false
 ---

@@ -5,7 +5,7 @@ tags:
 - "SoS"
 - "Warhammer fantasy"
 - "小说"
-excerpt: "这篇文章没有简介。"  
+excerpt: "这篇文章没有简介。"
 date: 2026-02-04
 hasAI: false
 ---

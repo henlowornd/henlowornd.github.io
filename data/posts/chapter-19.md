@@ -5,7 +5,7 @@ tags:
 - "SoS"
 - "Warhammer fantasy"
 - "小说"
-excerpt: "没骗你。一团糟。"  
+excerpt: "没骗你。一团糟。"
 date: 2026-02-03
 hasAI: false
 ---

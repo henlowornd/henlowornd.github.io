@@ -5,7 +5,7 @@ tags:
 - "SoS"
 - "Warhammer fantasy"
 - "小说"
-excerpt: "一些杂七杂八的小事。"  
+excerpt: "一些杂七杂八的小事。"
 date: 2026-02-04
 hasAI: false
 ---

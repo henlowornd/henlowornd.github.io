@@ -5,7 +5,7 @@ tags:
 - "SoS"
 - "Warhammer fantasy"
 - "小说"
-excerpt: "作者刚签完霸王条款。"  
+excerpt: "作者刚签完霸王条款。"
 date: 2026-02-08
 hasAI: false
 ---
