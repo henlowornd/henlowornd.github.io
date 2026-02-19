@@ -1,4 +1,4 @@
-    ---
+---
 title: "算是对2025的总结"
 author: "Deed9189"
 tags:
