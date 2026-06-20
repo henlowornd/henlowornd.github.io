@@ -3,7 +3,7 @@
 
 @layer components {
   article {
-    p, pre, table {
+    p, pre, table, .mermaid {
       @apply my-4;
     }
     p {
@@ -39,10 +39,16 @@
         @apply !p-0 !bg-transparent;
       }
     }
+    .mermaid {
+      @apply flex justify-center overflow-x-auto;
+      svg {
+        @apply max-w-full;
+      }
+    }
     blockquote {
       @apply text-center;
       p {
-        @apply font-[宋体];
+        @apply font-[瀹嬩綋];
       }
       b, strong {
         @apply font-bold;
