@@ -12,6 +12,11 @@ export function CodeBlock({ children }: {
 	const content = childProps.children;
 	const [icon, setIcon] = useState(<Copy />);
 
+	// Mermaid diagrams: render as plain div for mermaid.run() to process
+	if (lang === "mermaid") {
+		return <div className="mermaid">{content as string}</div>;
+	}
+
 	const handleCopy = async () => {
 		try {
 			await window.navigator.clipboard.writeText(content as string);
