@@ -22,7 +22,6 @@ import {
 import bash from "@/lib/hljs/bash";
 import { DisclaimerCallout, ErrorCallout, InfoCallout, TipCallout, WarningCallout } from "./ui/callout";
 
-// Mermaid initialization
 mermaid.initialize({
   startOnLoad: false,
   theme: "dark",
@@ -35,16 +34,16 @@ mermaid.initialize({
     primaryBorderColor: "#525252",
     lineColor: "#a3a3a3",
     secondaryColor: "#374151",
+    edgeLabelBackground: "rgba(0,0,0,0)",
     tertiaryColor: "#1f2937",
     fontSize: "14px",
     fontFamily: '"Fira Code", "Cascadia Code", Consolas, monospace',
   },
   themeCSS: [
-    // Subgraph: same as site background, border only
-    ".cluster rect, .cluster polygon { fill: #1d1d1d !important; stroke: #525252 !important; stroke-width: 1.5px !important; }",
+    ".cluster rect, .cluster polygon { fill: #1d1d1d !important; stroke: none !important; }",
     ".cluster text { fill: #a3a3a3 !important; }",
-    // Edge / node label backgrounds: dark rounded box (hasAI alert bg color)
-    ".labelBkg { fill: oklch(0.205 0 0) !important; rx: 6px !important; ry: 6px !important; stroke: none !important; }",
+    ".edgeLabel .labelBkg, .edgeLabel div { background: rgba(0,0,0,0) !important; border: none !important; opacity: 1 !important; }",
+    ".edgeLabel foreignObject { background: transparent !important; }",
   ].join("\n"),
   flowchart: { useMaxWidth: true, curve: "basis" },
   sequence: { useMaxWidth: true, mirrorActors: false },
@@ -54,7 +53,6 @@ mermaid.initialize({
 });
 
 function renderLatex(content: string) {
-  // block latex
   content = content.replace(/\$\$([^\$]+)\$\$/g, (match, formula) => {
     try {
       return katex.renderToString(formula, { displayMode: true, output: "html" });
@@ -62,8 +60,6 @@ function renderLatex(content: string) {
       return match;
     }
   });
-
-  // inline latex
   content = content.replace(/\$([^\$]+)\$/g, (match, formula) => {
     try {
       return katex.renderToString(formula, { displayMode: false, output: "html" });
@@ -71,7 +67,6 @@ function renderLatex(content: string) {
       return match;
     }
   });
-
   return content;
 }
 
@@ -80,7 +75,6 @@ export function Markdown({ wrapper, children, enableKatex = true }: {
   children: string
   enableKatex?: boolean
 }) {
-  // Highlight.js + Mermaid Rendering
   useEffect(() => {
     hljs.unregisterLanguage("bash");
     hljs.unregisterLanguage("cmd");
@@ -88,14 +82,13 @@ export function Markdown({ wrapper, children, enableKatex = true }: {
     hljs.registerLanguage("cmd", () => bash);
     hljs.highlightAll();
 
-    // Render Mermaid diagrams
     void (async () => {
       const els = document.querySelectorAll(".mermaid:not([data-processed])");
       if (els.length > 0) {
         try {
           await mermaid.run({ nodes: Array.from(els) as HTMLElement[] });
         } catch {
-          // Mermaid handles errors internally with a red box
+          // Mermaid handles errors internally
         }
       }
     })();
