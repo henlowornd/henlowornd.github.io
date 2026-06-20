@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import * as MarkdownJSX from "markdown-to-jsx";
 import { RuleType } from "markdown-to-jsx";
 import hljs from "highlight.js";
+import mermaid from "mermaid";
 import "katex/dist/katex";
 import "katex/contrib/mhchem";
 import katex from "katex";
@@ -20,6 +21,13 @@ import {
 } from "./ui/table";
 import bash from "@/lib/hljs/bash";
 import { DisclaimerCallout, ErrorCallout, InfoCallout, TipCallout, WarningCallout } from "./ui/callout";
+
+// Mermaid initialization (runs once at module evaluation)
+mermaid.initialize({
+  startOnLoad: false,
+  theme: "dark",
+  securityLevel: "loose",
+});
 
 function renderLatex(content: string) {
   // block latex
@@ -48,14 +56,26 @@ export function Markdown({ wrapper, children, enableKatex = true }: {
   children: string
   enableKatex?: boolean
 }) {
-  // Highlight.js & Katex Rendering
+  // Highlight.js + Mermaid Rendering
   useEffect(() => {
     hljs.unregisterLanguage("bash");
     hljs.unregisterLanguage("cmd");
     hljs.registerLanguage("bash", () => bash);
     hljs.registerLanguage("cmd", () => bash);
     hljs.highlightAll();
-  }, []);
+
+    // Render Mermaid diagrams
+    void (async () => {
+      const els = document.querySelectorAll(".mermaid:not([data-processed])");
+      if (els.length > 0) {
+        try {
+          await mermaid.run({ nodes: Array.from(els) as HTMLElement[] });
+        } catch {
+          // Mermaid handles errors internally with a red box
+        }
+      }
+    })();
+  }, [children]);
 
   return (
     <MarkdownJSX.default options={{
