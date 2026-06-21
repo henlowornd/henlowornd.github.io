@@ -40,8 +40,9 @@ mermaid.initialize({
     fontFamily: '"Fira Code", "Cascadia Code", Consolas, monospace',
   },
   themeCSS: [
-    ".cluster rect, .cluster polygon { fill: #1d1d1d !important; stroke: none !important; }",
-    ".cluster text { fill: #a3a3a3 !important; }",
+    ".cluster rect, .cluster polygon { fill: transparent !important; stroke: none !important; }",
+    ".cluster text { fill: #e5e5e5 !important; }",
+    ".cluster .cluster-label p { color: #a3a3a3 !important; }",
     ".edgeLabel .labelBkg, .edgeLabel div { background: rgba(0,0,0,0) !important; border: none !important; opacity: 1 !important; }",
     ".edgeLabel foreignObject { background: transparent !important; }",
   ].join("\n"),
