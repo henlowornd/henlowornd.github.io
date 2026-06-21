@@ -1,4 +1,4 @@
----
+﻿---
 title: "离散数学笔记-图论"
 author: Deed9189
 tags:
@@ -68,7 +68,7 @@ graph
   * 关联和相邻原理与无向图同理。
 
 ```mermaid
-graph LR
+graph
     subgraph G2
       direction LR
       v1((v1))
@@ -84,7 +84,58 @@ graph LR
     end
 ```
 
-* 无向图的度数（度）：顶点 $v$ 作为无向边的端点的次数，记作 $d(v)$。
+* 无向图的度数（度）：顶点 $v$ 作为无向边的端点的次数，记作 $d(v)$。  
+  * 如图G1，$d(v_2) = 2$, $d(v_1) = 5$
 * 有向图的度数：
   * 入度：顶点 $v$ 作为有向边的终点的次数，记作 $d^-(v)$
-  * 出度：顶点 $v$ 作为有向边的始点的次数，记作 $d^+(v)$
+  * 出度：顶点 $v$ 作为有向边的始点的次数，记作 $d^+(v)$  
+（$d(v) = d^+(v) + d^-(v)$）
+  * 如图G3，  
+  $
+  \begin{aligned}
+  \because \quad &d^+(v_2) = 1 \\
+   &d^-(v_2) = 2 \\
+  \therefore \quad &d(v_2) = d^+(v_2) + d^-(v_2) = 3 \\
+  \\
+  \because \quad &d^+(v_4) = 2 \\
+   &d^-(v_4) = 2 \\
+  \therefore \quad &d(v_4) = d^+(v_4) + d^-(v_4) = 4
+  \end{aligned}
+  $
+
+```mermaid
+graph
+    subgraph G3
+      direction LR
+      v1((v1))
+      v2((v2))
+      v3((v3))
+      v4((v4))
+
+      v1 --> v2 & v2 & v3
+      v2 --> v3
+      v3 --> v4
+      v4 --> v4 & v3
+    end
+```
+
+* **握手定理**：
+  * 无向图： $\sum_{v \in V} d(v) = 2|E|$  
+  * 有向图：
+    * $\sum_{v \in V} d(v) = 2|E|$
+    * $\sum_{v \in V} d^-(v) = \sum_{v \in V} d^+(v) = |E|$
+  * 推论:  
+    * 任何图中，奇度顶点的个数是偶数  
+    （原因：每条边都会贡献两次度数，因此所有度数的和必为偶数，所以奇度顶点的个数必须是偶数，否则矛盾）  
+    * $\sum_{v \in V} d(v_{odd}) $ + $\sum_{v \in V} d(v_{even}) $ =  $\sum_{v \in V} d(v)$
+  * e.g  
+  已知$n$阶无向图$G$中有$m$条边，各个顶点的度数均为$3$，又已知$2n - 3 = m$, 则$m = $ **9**  
+  解析：  
+  $
+  \begin{aligned}
+  \because \quad &3n = 2m \\
+  &2n - 3 = m \\
+  \therefore \quad &4n - 6 = 2m \\
+  &m = 
+  \end{aligned}
+  $
