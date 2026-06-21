@@ -65,9 +65,9 @@ export function getAllArticles<T extends boolean = false>(
     const raw = fs.readFileSync(filePath, "utf-8");
     const cleaned = stripBOM(raw);
 
-    let front: Record<string, unknown> & { __content?: string };
+    let front: Article;
     try {
-      front = loadFront(cleaned);
+      front = loadFront(cleaned) as Article;
     } catch {
       warn(fileName, "YAML parse error");
       continue;
@@ -116,7 +116,7 @@ export function getArticle(slug: string): Article | null {
   const raw = fs.readFileSync(filePath, "utf-8");
   const cleaned = stripBOM(raw);
 
-  let front: Record<string, unknown> & { __content: string };
+  let front: Article;
   try {
     front = loadFront(cleaned) as Article;
   } catch {
