@@ -129,13 +129,24 @@ graph
     （原因：每条边都会贡献两次度数，因此所有度数的和必为偶数，所以奇度顶点的个数必须是偶数，否则矛盾）  
     * $\sum_{v \in V} d(v_{odd}) $ + $\sum_{v \in V} d(v_{even}) $ =  $\sum_{v \in V} d(v)$
   * e.g  
-  已知$n$阶无向图$G$中有$m$条边，各个顶点的度数均为$3$，又已知$2n - 3 = m$, 则$m = $ **9**  
+  已知$n$阶无向图$G$中有$m$条边，各个顶点的度数均为$3$，又已知$2n - 3 = m$, 则$m = \boxed{9}$  
   解析：  
   $
   \begin{aligned}
   \because \quad &3n = 2m \\
   &2n - 3 = m \\
   \therefore \quad &4n - 6 = 2m \\
-  &m = 
+  &m = \boxed{9}
   \end{aligned}
   $
+
+* 度数列：  
+  * $n$阶无向图：  
+  $d(v_1), d(v_2), \ldots,d(v_n) \quad d = (d_1, d_2, \ldots, d_n)$
+  * $n$阶有向图：
+    * 入度列：  
+    $d^-(v_1), d^-(v_2), \ldots, d^-(v_n) \quad d^- = (d_1^-, d_2^-, \ldots, d_n^-)$
+    * 出度列：  
+    $d^+(v_1), d^+(v_2), \ldots, d^+(v_n) \quad d^+ = (d_1^+, d_2^+, \ldots, d_n^+)$
+  * e.g.  
+    * 一个三阶有向图的度序列是$2, 2, 4$， 入度序列是$2, 0, 2$，则出度序列是$\boxed{0, 2, 2}$
